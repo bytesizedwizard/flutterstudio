@@ -10,8 +10,10 @@ This code can be -
 - Copied to the clipboard
 - Shared via a range of third party apps
 
+A short demo walkthrough of the app can be found here on [YouTube](https://youtu.be/E7GrLKWOVIY).
+
 ## Note
-The current version of this app was onl prepared for demo purpose within a short span of 6 hours, and hence for now, only the following basic material widgets are supported -
+The current version of this app was only prepared for demo purpose within a short span of 6 hours, and hence for now, only the following basic material widgets are supported -
 1. Default `Scaffold`
 2. Default `AppBar`
 3. `Center` widget
