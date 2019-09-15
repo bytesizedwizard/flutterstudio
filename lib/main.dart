@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_studio/ui/welcome.dart';
 import 'material_menu.dart';
 import 'package:flutter_studio/bloc/provider.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(new MyApp());
+    runApp(new FlutterStudio());
   });
 }
 
-class MyApp extends StatelessWidget {
+class FlutterStudio extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Provider(child: StudioDashboard(title: 'Flutter Demo Home Page')),
+      home: Provider(child: WelcomeScreen()),
     );
   }
 }

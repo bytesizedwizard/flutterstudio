@@ -10,7 +10,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_studio"
+        android:label="Flutter Studio"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
