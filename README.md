@@ -1,7 +1,11 @@
-# Flutter Studio
+![Flutter Studio](https://github.com/siddharthpatankar/flutterstudio/blob/master/Flutter%20Studio%20Banner.png?raw=true)
 ## Interactive run-time dart code generator app for flutter widgets.
 
-Flutter studio started as an idea at the first ever International Flutter Hackathon. The goal of this idea is to help make flutter as fast and easy to learn as possible for beginners as well as seasoned flutter developers.
+Flutter Studio is an open source interactive Dart code generator developed in Flutter, the hybrid mobile programming framework based on the Dart language, made by Google.
+
+Initially developed as an official submission for the first ever Flutter International Hackathon, this project aims to help make flutter as fast and easy to learn as possible for beginners as well as seasoned developers.
+
+As popularity of flutter keeps on increasing with each new release, and more people are interested to try their hands with this new framework each day. We hope this project can serve as a starting point to all those who are looking to try out flutter, and in due course of time, can evolve into something much more.
 
 The interactive UI offers a range of widgets to choose from which can be viewed on the canvas board. As the user adds new widgets to the canvas, the corresponding Dart code for the widget tree is seamlessly generated at run time in code preview window.
 
@@ -20,7 +24,7 @@ The current version of this app was only prepared for demo purpose within a shor
 4. `Text` widget with pre-defined text
 5. Deafult `FloatingActionButton`
 
-> **Over time, support for more widgets will be added to the app and any contributions, ideas, comments or suggestions are more than welcome!**
+> **Over time, support for more widgets will be added to the app. Any contributions, ideas, comments or suggestions are always welcome!**
 
 Feel free to fork the project and try out your hands with flutter development! Let's build something great together!
 
