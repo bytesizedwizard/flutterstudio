@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_studio/utils/colors.dart';
+import 'components/screen_background.dart';
+import 'components/buttons.dart';
+import 'components/styles.dart';
 
+
+/// The first screen shown to the user after the splash screen.
+/// Provides a brief message about the project idea.
 class WelcomeScreen extends StatefulWidget {
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -14,19 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         alignment: Alignment.topLeft,
         children: <Widget>[
           Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.primaryAppColor,
-                    AppColors.secondaryAppColor
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  tileMode: TileMode.clamp
-                ),
-              ),
-            ),
+            child: ScreenBackgroundOverlay(),
           ),
           Positioned.fill(
             child: SafeArea(
@@ -117,25 +111,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Flexible(
                     flex: 2,
                     fit: FlexFit.loose,
-                    child: ButtonTheme(
-                      height: 50,
-                      buttonColor: AppColors(0xFF006AD3),
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4.0)
-                        ),
-                        elevation: 7.0,
-                        onPressed: () {},
-                        child: Text(
-                          "Get Started",
-                          style: TextStyle(
-                            color: AppColors.primaryFontColor,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 16
-                          ),
-                        ),
+                    child: CustomButton(
+                      child: Text(
+                        "Get Started",
+                        style: CustomStyles.ButtonTextStyle,
                       ),
-                    ),
+                    )
                   )
                 ],
               ),
