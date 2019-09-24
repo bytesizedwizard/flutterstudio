@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_studio/ui/canvas_dashboard.dart';
 import 'package:flutter_studio/utils/colors.dart';
 import 'components/screen_background.dart';
 import 'components/buttons.dart';
@@ -116,6 +118,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         "Get Started",
                         style: CustomStyles.ButtonTextStyle,
                       ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => StudioDashboard(),
+                          ),
+                        );
+                      },
                     )
                   )
                 ],

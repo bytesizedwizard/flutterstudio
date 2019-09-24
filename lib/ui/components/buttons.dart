@@ -4,8 +4,9 @@ import 'package:flutter_studio/utils/colors.dart';
 class CustomButton extends StatelessWidget {
 
   final Widget child;
+  final VoidCallback onPressed;
 
-  CustomButton({@required this.child}) : assert(child != null);
+  CustomButton({@required this.child, @required this.onPressed}) : assert(child != null && onPressed != null);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(4.0)
         ),
         elevation: 7.0,
-        onPressed: () {},
+        onPressed: onPressed,
         child: child,
       ),
     );
