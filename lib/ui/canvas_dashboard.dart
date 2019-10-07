@@ -1,4 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_studio/ui/components/buttons.dart';
+import 'package:flutter_studio/ui/components/styles.dart';
+import 'package:flutter_studio/ui/new_widget.dart';
+import 'package:flutter_studio/utils/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_studio/bloc/provider.dart';
 import 'package:flutter_studio/material_menu.dart';
@@ -30,167 +35,201 @@ class _StudioDashboardState extends State<StudioDashboard> {
 
     final _bloc = Provider.of(context);
 
-    return Stack(
-      children: <Widget>[
-        Positioned.fill(
-          child: ScreenBackgroundBasic(),
-        ),
-        Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
-            elevation: 0.0,
-            centerTitle: true,
-            title:  Image.asset(
-              "assets/images/flutter_studio_logo.png",
-              alignment: Alignment.topLeft,
-              width: 100,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.transparent,
+      body: Form(
+        key: _formKey,
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Positioned.fill(
+              child: ScreenBackgroundBasic(),
             ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.refresh),
-                onPressed: () {
-                  setState(() {
-                    previewAppBar = previewBody = previewFloatingActionButton = null;
-                  });
-                },
+            SafeArea(
+              minimum: EdgeInsets.only(
+                left: 20,
+                right: 20
               ),
-            ],
-          ),
-          body: Form(
-            key: _formKey,
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      fit: FlexFit.loose,
-                      child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 60.0,
-                              vertical: 10.0
-                          ),
-                          child: Text(
-                            "Use the widgets panel to start building",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                height: 1.1,
-                                color: Colors.white,
-                                fontSize: 12
-                            ),
-                          )
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Flexible(
+                    child: Image.asset(
+                      "assets/images/flutter_studio_logo.png",
+                      alignment: Alignment.center,
                     ),
-                    Flexible(
-                      flex: 10,
-                      child: PageView(
-                        controller: _pageController,
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: 20.0,
-                              horizontal: 60.0,
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white
-                            ),
+                  ),
+                  Flexible(
+                    flex: 20,
+                    child: PageView(
+                      controller: _pageController,
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 50.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors(0xFFFFFFFF),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.secondaryColor.withOpacity(0.75),
+                                blurRadius: 15.0,
+                                offset: Offset(0.0, 5.0),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
                             child: Scaffold(
                               appBar: previewAppBar,
                               body: previewBody,
                               floatingActionButton: previewFloatingActionButton,
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                              vertical: 20.0,
-                              horizontal: 50.0,
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.25)
-                            ),
-                            child: StreamBuilder<String>(
-                                stream: _bloc.getGeneratedCode,
-                                builder: (context, snapshot) {
-                                  if(!snapshot.hasData) {
-                                    return Container();
-                                  }
-
-                                  return SingleChildScrollView(
-                                    child: Text(
-                                      snapshot.data,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  );
-                                }
-                            ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 50.0,
                           ),
-                        ],
-                        onPageChanged: (index) {
-                          if(index == 1) {
-                            _bloc.setSelectedMenu("codeOptions");
-                          } else {
-                            _bloc.setSelectedMenu("none");
-                          }
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Container(),
-                    )
-                  ],
-                ),
-                Positioned(
-                  bottom: 0.0,
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                    width: MediaQuery.of(context).size.width,
-                    height: _widgetMenuHeight,
-                    color: Colors.black,
-                    child: SingleChildScrollView(
-                      child: StreamBuilder<String>(
-                          stream: _bloc.getSelectedMenu,
-                          initialData: "none",
-                          builder: (context, snapshot) {
-                            if(snapshot.hasData) {
-                              switch(snapshot.data) {
-                                case "none":
-                                  return defaultMenu(_bloc);
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.25)
+                          ),
+                          child: StreamBuilder<String>(
+                              stream: _bloc.getGeneratedCode,
+                              builder: (context, snapshot) {
+                                if(!snapshot.hasData) {
+                                  return Container();
+                                }
 
-                                case "material":
-                                  return MaterialWidgetMenu(
-                                      expandCollapseMenu,
-                                      renderPreviewAppBar,
-                                      renderPreviewBody,
-                                      renderFloatingActionButton,
-                                      onButtonPressed,
-                                      counter,
-                                      centerWidgetCallback
-                                  );
-
-                                case "codeOptions":
-                                  return codeMenu(_bloc);
+                                return SingleChildScrollView(
+                                  child: Text(
+                                    snapshot.data,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                );
                               }
-                            }
-                            return defaultMenu(_bloc);
-                          }
-                      ),
+                          ),
+                        ),
+                      ],
+                      onPageChanged: (index) {
+                        if(index == 1) {
+                          _bloc.setSelectedMenu("codeOptions");
+                        } else {
+                          _bloc.setSelectedMenu("none");
+                        }
+                      },
                     ),
                   ),
-                )
-              ],
+                  Flexible(
+                    flex: 3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        CustomButton.secondary(
+                          child: Icon(Icons.undo, color: AppColors.fontPrimaryColor,),
+                          onPressed: () {
+
+                          },
+                          buttonColor: AppColors.secondaryColor,
+                        ),
+                        CustomButton.secondary(
+                          child: Icon(Icons.loop, color: AppColors.fontPrimaryColor,),
+                          onPressed: () {
+                            setState(() {
+                              previewAppBar = previewBody = previewFloatingActionButton = null;
+                            });
+                          },
+                          buttonColor: AppColors.secondaryColor,
+                        ),
+                        CustomButton.secondary(
+                          child: Icon(Icons.redo, color: AppColors.fontPrimaryColor,),
+                          onPressed: () {
+
+                          },
+                          buttonColor: AppColors.secondaryColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 15,),
+                  Flexible(
+                    flex: 2,
+                    child: CustomButton(
+                      child: Text(
+                        "Add New Widget",
+                        style: CustomStyles.buttonTextStyle,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          CupertinoPageRoute(builder: (_) => NewWidget())
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 15,),
+                  Flexible(
+                    flex: 2,
+                    child: CustomButton.secondary(
+                      child: Text(
+                        "View Code",
+                        style: CustomStyles.buttonTextStyle,
+                      ),
+                      onPressed: () {},
+                      buttonColor: AppColors.secondaryColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ), // This trailing comma makes auto-formatting nicer for build methods.
+            /*Positioned(
+              bottom: 0.0,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                width: MediaQuery.of(context).size.width,
+                height: _widgetMenuHeight,
+                color: Colors.black,
+                child: SingleChildScrollView(
+                  child: StreamBuilder<String>(
+                      stream: _bloc.getSelectedMenu,
+                      initialData: "none",
+                      builder: (context, snapshot) {
+                        if(snapshot.hasData) {
+                          switch(snapshot.data) {
+                            case "none":
+                              return defaultMenu(_bloc);
+
+                            case "material":
+                              return MaterialWidgetMenu(
+                                  expandCollapseMenu,
+                                  renderPreviewAppBar,
+                                  renderPreviewBody,
+                                  renderFloatingActionButton,
+                                  onButtonPressed,
+                                  counter,
+                                  centerWidgetCallback
+                              );
+
+                            case "codeOptions":
+                              return codeMenu(_bloc);
+                          }
+                        }
+                        return defaultMenu(_bloc);
+                      }
+                  ),
+                ),
+              ),
+            )*/
+          ],
         ),
-      ],
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 

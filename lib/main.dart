@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_studio/utils/colors.dart';
 import 'package:flutter_studio/ui/welcome.dart';
-import 'material_menu.dart';
 import 'package:flutter_studio/bloc/provider.dart';
 
 void main() {
@@ -21,6 +20,9 @@ class FlutterStudio extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         home: WelcomeScreen(),
+        theme: ThemeData(
+          primaryColor: AppColors.primaryColor,
+        ),
       ),
     );
   }

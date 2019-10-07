@@ -12,8 +12,8 @@ class ScreenBackgroundOverlay extends Stack {
         decoration: BoxDecoration(
           gradient: LinearGradient(
               colors: [
-                AppColors.primaryAppColor,
-                AppColors.secondaryAppColor
+                AppColors.primaryColor,
+                AppColors.secondaryColor
               ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
@@ -45,12 +45,12 @@ class ScreenBackgroundBasic extends Container {
     decoration: BoxDecoration(
       gradient: LinearGradient(
           colors: [
-            AppColors.primaryAppColor,
-            AppColors.secondaryAppColor
-          ],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          tileMode: TileMode.clamp
+          AppColors.primaryColor,
+          AppColors.secondaryColor
+        ],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+        tileMode: TileMode.clamp,
       ),
     ),
     child: child,
@@ -62,7 +62,7 @@ class ScreenBackgroundBasic extends Container {
 class _BackgroundEllipsePainter extends CustomPainter {
 
   final Paint _customPaint = Paint()
-  ..color = AppColors.primaryFontColor.withOpacity(0.05)
+  ..color = AppColors.fontPrimaryColor.withOpacity(0.05)
   ..isAntiAlias = true
   ..strokeWidth = 4.0
   ..style = PaintingStyle.fill;
@@ -82,7 +82,7 @@ class _BackgroundEllipsePainter extends CustomPainter {
 class _ForegroundEllipsePainter extends CustomPainter {
 
   final Paint _customPaint = Paint()
-    ..color = AppColors.primaryFontColor.withOpacity(0.05)
+    ..color = AppColors.fontPrimaryColor.withOpacity(0.05)
     ..isAntiAlias = true
     ..strokeWidth = 4.0
     ..style = PaintingStyle.fill;

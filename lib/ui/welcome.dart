@@ -41,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Text(
                       "Welcome to",
                       style: TextStyle(
-                        color: AppColors.primaryFontColor,
+                        color: AppColors.fontPrimaryColor,
                         fontSize: 20,
                         fontWeight: FontWeight.w600
                       ),
@@ -71,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           "Flutter Studio is an open source interactive Dart code generator developed in Flutter, the hybrid mobile programming framework based on the Dart language, made by Google.",
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.primaryFontColor,
+                              color: AppColors.fontPrimaryColor,
                               fontWeight: FontWeight.w300,
                               height: 1.25
                           ),
@@ -81,7 +81,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           "Initially developed as an official submission for the first ever Flutter International Hackathon, this project aims to help make flutter as fast and easy to learn as possible for beginners as well as seasoned developers.",
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.primaryFontColor,
+                              color: AppColors.fontPrimaryColor,
                               fontWeight: FontWeight.w300,
                               height: 1.25
                           ),
@@ -91,7 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           "We hope this project can serve as a starting point to all those who are looking to try out flutter, and in due course of time, can evolve into something much more.",
                           style: TextStyle(
                               fontSize: 14,
-                              color: AppColors.primaryFontColor,
+                              color: AppColors.fontPrimaryColor,
                               fontWeight: FontWeight.w300,
                               height: 1.25
                           ),
@@ -101,7 +101,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           "Let's build something great together!",
                           style: TextStyle(
                               fontSize: 18,
-                              color: AppColors.primaryFontColor,
+                              color: AppColors.fontPrimaryColor,
                               fontWeight: FontWeight.w600,
                               height: 1.25
                           ),
@@ -116,7 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: CustomButton(
                       child: Text(
                         "Get Started",
-                        style: CustomStyles.ButtonTextStyle,
+                        style: CustomStyles.buttonTextStyle,
                       ),
                       onPressed: () {
                         Navigator.pushReplacement(
