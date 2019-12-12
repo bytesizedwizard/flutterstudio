@@ -17,7 +17,9 @@ This code can be -
 A short demo walkthrough of the app can be found here on [YouTube](https://youtu.be/E7GrLKWOVIY).
 
 ## Note
-The current version of this app was only prepared for demo purpose within a short span of 6 hours, and hence for now, only the following basic material widgets are supported -
+We accidentally broke the master branch code! We promise we're working on a fix for it. Meanwhile, please use the [preview](https://github.com/siddharthpatankar/flutterstudio/tree/preview) branch for the lastest stable working code.
+
+Also, the preview branch version of this app was only prepared for a demo within a short span of 5 hours, and hence for now, only the following basic material widgets are supported -
 1. Default `Scaffold`
 2. Default `AppBar`
 3. `Center` widget
