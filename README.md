@@ -1,3 +1,5 @@
+![Test, Build and Release APK](https://github.com/thebuggycoder/flutterstudio/workflows/Test,%20Build%20and%20Release%20APK/badge.svg?branch=master)
+
 ![Flutter Studio](https://github.com/siddharthpatankar/flutterstudio/blob/master/Flutter%20Studio%20Banner.png?raw=true)
 ## Interactive run-time dart code generator app for flutter widgets.
 
