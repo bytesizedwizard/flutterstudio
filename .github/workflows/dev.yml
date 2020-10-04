@@ -22,9 +22,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
+      - name: Java Environment Setup
+        uses: actions/setup-java@v1
+      
       - name: Flutter Environment Setup
-      - uses: actions/setup-java@v1
-      - uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v1
       
       - run: flutter pub get
       - run: flutter test
