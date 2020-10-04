@@ -5,6 +5,7 @@ import 'package:flutter_studio/ui/welcome.dart';
 import 'package:flutter_studio/bloc/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new FlutterStudio());
@@ -27,5 +28,3 @@ class FlutterStudio extends StatelessWidget {
     );
   }
 }
-
-
