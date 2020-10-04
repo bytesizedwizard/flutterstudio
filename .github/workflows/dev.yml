@@ -24,6 +24,8 @@ jobs:
       
       - name: Java Environment Setup
         uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
         
       - name: Flutter Environment Setup  
         uses: subosito/flutter-action@v1
