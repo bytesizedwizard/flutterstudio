@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_studio/bloc/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class MaterialWidgetMenu extends StatefulWidget {
   final VoidCallback expandCollapseMenuCallback;
@@ -21,7 +21,6 @@ class MaterialWidgetMenu extends StatefulWidget {
 class _MaterialWidgetMenuState extends State<MaterialWidgetMenu> {
   AppBar _appBar;
   Widget _body;
-  FloatingActionButton _floatingActionButton;
 
 
   @override

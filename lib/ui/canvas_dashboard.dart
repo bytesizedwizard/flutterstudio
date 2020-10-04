@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_studio/bloc/bloc.dart';
 import 'package:flutter_studio/ui/components/buttons.dart';
 import 'package:flutter_studio/ui/components/styles.dart';
 import 'package:flutter_studio/ui/new_widget.dart';
 import 'package:flutter_studio/utils/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_studio/bloc/provider.dart';
-import 'package:flutter_studio/material_menu.dart';
-
+import 'package:provider/provider.dart';
 import 'components/screen_background.dart';
 
 class StudioDashboard extends StatefulWidget {
@@ -33,7 +32,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
   @override
   Widget build(BuildContext context) {
 
-    final _bloc = Provider.of(context);
+    final _bloc = Provider.of<Bloc>(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,

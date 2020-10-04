@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_studio/bloc/bloc.dart';
 import 'package:flutter_studio/utils/colors.dart';
 import 'package:flutter_studio/ui/welcome.dart';
-import 'package:flutter_studio/bloc/provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,9 @@ class FlutterStudio extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return Provider<Bloc>(
+      create: (context) => Bloc(),
+      dispose: (context, bloc) => bloc.dispose(),
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,

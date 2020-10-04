@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:share/share.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:simple_permissions/simple_permissions.dart';
 import 'dart:io';
 
 class Bloc {
@@ -33,25 +32,18 @@ class Bloc {
   }
 
   void writeToStorage() async{
-    bool checkResult =
-    await SimplePermissions.checkPermission(Permission.WriteExternalStorage);
 
-    if(!checkResult) {
-      var status = await SimplePermissions.requestPermission(
-          Permission.WriteExternalStorage);
-
-      if(status == PermissionStatus.authorized) {
-        Directory externalDirectory = await getExternalStorageDirectory();
-        File myFile = File(externalDirectory.path + "/temp.dart");
-
-        myFile.writeAsStringSync(_codeGenerationController.value);
-      }
-    } else {
+    if(Platform.isAndroid) {
       Directory externalDirectory = await getExternalStorageDirectory();
       File myFile = File(externalDirectory.path + "/temp.dart");
 
       myFile.writeAsStringSync(_codeGenerationController.value);
     }
+  }
+
+  void dispose() {
+    _menuOptionController.close();
+    _codeGenerationController.close();
   }
 
 }

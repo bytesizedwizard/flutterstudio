@@ -20,29 +20,7 @@ class _NewWidgetState extends State<NewWidget> {
             style: CustomStyles.appBarTitleStyle,
           ),
           titleSpacing: 0.0,
-          bottom: PreferredSize(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    "Select widget category",
-                    style: CustomStyles.appBarSubTitleStyle,
-                  ),
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(left: 55,),
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20,),
-                  child: Divider(
-                    color: AppColors.fontPrimaryColor.withOpacity(0.30),
-                    thickness: 1.0,
-                  ),
-                ),
-              ],
-            ),
-            preferredSize: Size.fromHeight(25),
-          ),
+          elevation: 0.0,
         ),
         backgroundColor: AppColors.transparent,
       ),
