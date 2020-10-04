@@ -5,10 +5,10 @@ name: Dev Branch CI
 on:
   push:
     branches: 
-      - feature-ui-redesign
+      - dev
   pull_request:
     branches:
-      - feature-ui-redesign
+      - dev
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
